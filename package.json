@@ -11,6 +11,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
+    "type-check": "tsgo --noEmit",
     "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
@@ -22,6 +23,7 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@rolldown/binding-darwin-arm64": "1.0.0-beta.57",
     "@tailwindcss/vite": "^4.0.0",
     "@tanstack/router-devtools": "^1.144.0",
     "@tanstack/router-plugin": "^1.144.0",
@@ -30,21 +32,25 @@
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@typescript/native-preview": "latest",
     "@vitejs/plugin-react": "^5.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
+    "happy-dom": "^20.3.9",
     "jsdom": "^27.4.0",
-    "oxfmt": "^0.20.0",
-    "oxlint": "^1.35.0",
-    "oxlint-tsgolint": "^0.10.0",
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0",
+    "oxlint-tsgolint": "^0.11.2",
     "tailwindcss": "^4.0.0",
-    "@typescript/native-preview": "latest",
-    "vite": "8.0.0-beta.5",
+    "vite": "8.0.0-beta.10",
     "vitest": "^4.0.16"
   },
   "packageManager": "pnpm@10.16.1",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "esbuild"
-    ]
+    ],
+    "overrides": {
+      "vite": "8.0.0-beta.10"
+    }
   }
 }
