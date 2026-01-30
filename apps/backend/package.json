@@ -1,0 +1,34 @@
+{
+  "name": "@repo/backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/app.ts"
+  },
+  "scripts": {
+    "dev": "tsx watch --watch-path=../../packages src/index.ts",
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run --passWithNoTests",
+    "type-check": "tsgo --noEmit",
+    "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src"
+  },
+  "dependencies": {
+    "@hono/node-server": "catalog:",
+    "@hono/zod-validator": "^0.4.0",
+    "@repo/schema": "workspace:*",
+    "@repo/types": "workspace:*",
+    "hono": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "oxlint": "catalog:",
+    "typescript": "catalog:",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.0",
+    "vitest": "catalog:"
+  }
+}

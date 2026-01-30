@@ -22,4 +22,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    fs: {
+      allow: [fileURLToPath(new URL('../..', import.meta.url))],
+    },
+    watch: {
+      ignored: ['!**/node_modules/@repo/**'],
+    },
+  },
 })

@@ -1,3 +1,4 @@
+import { ErrorFallback, NotFound } from '@/components/error-fallback'
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
@@ -11,10 +12,17 @@ export const Route = createRootRoute({
         <Link to="/about" className="[&.active]:font-bold">
           About
         </Link>
+        <Link to="/users" className="[&.active]:font-bold">
+          Users
+        </Link>
       </div>
       <hr />
       <Outlet />
       <TanStackRouterDevtools />
     </>
   ),
+  errorComponent: ({ error, reset }) => {
+    return <ErrorFallback error={error} reset={reset} />
+  },
+  notFoundComponent: NotFound,
 })

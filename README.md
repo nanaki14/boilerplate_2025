@@ -1,57 +1,72 @@
 # boilerplate_2025
 
-Modern React application boilerplate with cutting-edge tooling.
+Turborepo monorepo with React frontend, Hono backend, and shared packages.
 
 ## Tech Stack
 
-### Core
-- **React 19.2** - UI library
-- **TypeScript** - Type safety with [@typescript/native-preview](https://github.com/microsoft/TypeScript)
+### Monorepo
+- **Turborepo** - Build system for monorepos
+- **pnpm** - Package manager with workspace & catalog support
+
+### Frontend (`apps/frontend`)
+- **React 19** - UI library
 - **Vite 8.0** (beta) - Build tool powered by Rolldown
+- **TanStack Router** - Type-safe file-based routing
+- **TanStack Query** - Data fetching and caching
+- **Tailwind CSS 4** - Utility-first CSS framework
 
-### Routing & State Management
-- **TanStack Router 1.144** - Type-safe routing
-- **TanStack Query 5.90** - Data fetching and caching
+### Backend (`apps/backend`)
+- **Hono** - Lightweight web framework
+- **Zod** - Runtime validation via `@repo/schema`
 
-### Styling
-- **Tailwind CSS 4.1** - Utility-first CSS framework
+### Shared Packages
+- **@repo/schema** - Zod schemas with inferred types
+- **@repo/types** - Shared TypeScript type definitions
+- **@repo/typescript-config** - Shared tsconfig base configurations
 
 ### Testing
-- **Vitest 4.0** - Unit testing framework
+- **Vitest** - Unit testing framework
 - **Testing Library** - React component testing
 - **happy-dom** - Fast DOM implementation for tests
 
 ### Code Quality
-- **oxc (oxlint + oxfmt)** - Fast linting and formatting
-  - oxlint 1.41 - Linter with type-aware rules
-  - oxfmt 0.26 - Code formatter with import/class sorting
-- **oxlint-tsgolint 0.11** - TypeScript-specific linting rules
+- **oxlint** - Fast linter with type-aware rules
+- **oxfmt** - Code formatter with import/Tailwind class sorting
 
-### Build & Development
-- **pnpm** - Fast, disk space efficient package manager
-- **tsgo** - TypeScript compiler from @typescript/native-preview
+### TypeScript
+- **@typescript/native-preview (tsgo)** - Fast TypeScript type-checking
+- **typescript** - Used by build tools (tsup)
 
-## Editor Setup
+## Project Structure
 
-### Required Plugins
-
-#### VS Code / Cursor
-1. **[Oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)** - For linting and formatting
-   - Install from VS Code Marketplace: `oxc.oxc-vscode`
-   - Already configured in `.vscode/settings.json`
-
-2. **TypeScript Workspace Version**
-   - The project uses `@typescript/native-preview`
-   - When prompted, select "Use Workspace Version" for TypeScript
-   - Or manually: `Cmd+Shift+P` → "TypeScript: Select TypeScript Version" → "Use Workspace Version"
-
-### Configuration Files
-
-- `.vscode/settings.json` - VS Code workspace settings
-- `.oxfmtrc.json` - Oxfmt formatter configuration
-- `.npmrc` - pnpm configuration for rolldown bindings
-- `tsconfig.json` - TypeScript configuration
-- `vitest.config.ts` - Test configuration
+```
+boilerplate_2025/
+├── apps/
+│   ├── frontend/           # React SPA (Vite + TanStack Router)
+│   │   ├── src/
+│   │   │   ├── routes/     # File-based routes
+│   │   │   ├── utils/      # Utility functions
+│   │   │   └── test/       # Test setup
+│   │   ├── index.html
+│   │   ├── vite.config.ts
+│   │   └── vitest.config.ts
+│   └── backend/            # Hono API server
+│       └── src/
+│           └── index.ts
+├── packages/
+│   ├── schema/             # @repo/schema - Zod schemas
+│   │   └── src/index.ts
+│   ├── types/              # @repo/types - Shared types
+│   │   └── src/index.ts
+│   └── typescript-config/  # @repo/typescript-config - Shared tsconfig
+│       ├── base.json
+│       ├── react.json
+│       └── node.json
+├── turbo.json              # Turborepo task pipeline
+├── pnpm-workspace.yaml     # Workspace & catalog config
+├── .oxlintrc.json          # Linter config
+└── .oxfmtrc.json           # Formatter config
+```
 
 ## Getting Started
 
@@ -68,8 +83,12 @@ pnpm install
 ### Development
 
 ```bash
-# Start development server
+# Start all dev servers (frontend + backend)
 pnpm dev
+
+# Start specific app
+pnpm turbo run dev --filter=@repo/frontend
+pnpm turbo run dev --filter=@repo/backend
 
 # Run tests
 pnpm test
@@ -82,59 +101,132 @@ pnpm lint
 
 # Format code
 pnpm format
-
-# Check formatting
 pnpm format:check
 ```
 
 ### Build
 
 ```bash
-# Build for production
+# Build all apps
 pnpm build
 
-# Preview production build
-pnpm preview
+# Build specific app
+pnpm turbo run build --filter=@repo/frontend
+pnpm turbo run build --filter=@repo/backend
 ```
 
-## Project Structure
+## Shared Packages
 
+### @repo/schema
+
+Zod schemas for runtime validation. Exports both schemas and inferred types.
+
+```ts
+import { userSchema, createUserSchema } from '@repo/schema'
+import type { User, CreateUser } from '@repo/schema'
 ```
-boilerplate_2025/
-├── src/
-│   ├── routes/         # TanStack Router routes
-│   ├── utils/          # Utility functions
-│   ├── test/           # Test setup
-│   ├── main.tsx        # Application entry point
-│   └── index.css       # Global styles
-├── .vscode/            # VS Code configuration
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── vitest.config.ts
+
+### @repo/types
+
+Shared TypeScript type definitions (no runtime dependencies).
+
+```ts
+import type { ApiResponse, User } from '@repo/types'
 ```
+
+### @repo/typescript-config
+
+Shared tsconfig base files. Each app/package extends one of these:
+
+- `base.json` - Shared base configuration
+- `react.json` - For React apps (extends base)
+- `node.json` - For Node.js apps (extends base)
+
+```json
+{
+  "extends": "@repo/typescript-config/react.json"
+}
+```
+
+## pnpm Catalog
+
+Shared dependency versions are managed via pnpm catalog in `pnpm-workspace.yaml`. Use `catalog:` as version specifier in `package.json`:
+
+```json
+{
+  "dependencies": {
+    "zod": "catalog:"
+  }
+}
+```
+
+## Frontend / Backend 単体で使う場合
+
+このモノレポはフロントエンドのみ、またはバックエンドのみで使うこともできます。
+
+### フロントエンドのみ
+
+バックエンド (`apps/backend`) を削除し、Hono RPC 関連のコードを取り除きます。
+
+1. `apps/backend/` を削除
+2. `apps/frontend/package.json` から `@repo/backend` と `hono` を削除
+3. `apps/frontend/src/lib/api.ts` を削除（または fetch ベースに書き換え）
+4. `apps/frontend/src/lib/hooks.ts` の RPC クライアント呼び出しを通常の fetch に差し替え
+
+```diff
+ // apps/frontend/package.json
+ "dependencies": {
+-  "@repo/backend": "workspace:*",
+   "@repo/schema": "workspace:*",
+   "@repo/types": "workspace:*",
+   "@tanstack/react-query": "^5.90.14",
+   "@tanstack/react-router": "^1.144.0",
+-  "hono": "catalog:",
+   "react": "catalog:",
+   "react-dom": "catalog:"
+ }
+```
+
+### バックエンドのみ
+
+フロントエンド (`apps/frontend`) を削除します。
+
+1. `apps/frontend/` を削除
+2. ルートの `.oxfmtrc.json` から `experimentalTailwindcss` セクションを削除（Tailwind CSS は不要）
+3. 必要に応じて `packages/types`, `packages/schema` はそのまま利用可能
+
+### 共通手順
+
+どちらの場合も以下を実施してください。
+
+```bash
+# 不要な app を削除した後
+pnpm install    # lockfile を再生成
+pnpm build      # ビルド確認
+```
+
+`turbo.json`, `pnpm-workspace.yaml`, `packages/` はそのまま動作します。残った app とパッケージだけが対象になります。
 
 ## Notes
 
+### Internal Packages Pattern
+`@repo/schema` and `@repo/types` use the internal packages pattern - they export TypeScript source directly without a build step. Both Vite and tsx handle TypeScript resolution natively.
+
 ### Vite 8 Beta
-This project uses Vite 8.0.0-beta, which is powered by Rolldown. The `pnpm.overrides` configuration ensures Vitest uses the same Vite version.
+This project uses Vite 8.0.0-beta powered by Rolldown. The `pnpm.overrides` configuration ensures Vitest uses the same Vite version.
 
-### oxfmt Features
-- **Import Sorting**: Automatically organizes imports by type (side-effect, builtin, external, internal, etc.)
-- **Tailwind Class Sorting**: Sorts Tailwind CSS classes in `className` attributes and `cn`/`clsx` functions
-
-### TypeScript Native Preview
-The project uses `@typescript/native-preview` (tsgo) for faster TypeScript compilation. Make sure your editor is configured to use the workspace TypeScript version.
+### Ports
+- Frontend dev server: `http://localhost:5173`
+- Backend dev server: `http://localhost:3001`
 
 ## Scripts Reference
 
 | Script | Description |
 |--------|-------------|
-| `dev` | Start development server |
-| `build` | Build for production |
-| `preview` | Preview production build |
-| `test` | Run tests in watch mode |
-| `type-check` | Run TypeScript type checking |
-| `lint` | Lint code with oxlint |
-| `format` | Format code with oxfmt |
-| `format:check` | Check if code is formatted |
+| `dev` | Start all dev servers |
+| `build` | Build all apps |
+| `test` | Run all tests |
+| `type-check` | TypeScript type checking |
+| `lint` | Lint all packages |
+| `format` | Format all code |
+| `format:check` | Check formatting |
