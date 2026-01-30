@@ -160,6 +160,53 @@ Shared dependency versions are managed via pnpm catalog in `pnpm-workspace.yaml`
 }
 ```
 
+## Frontend / Backend 単体で使う場合
+
+このモノレポはフロントエンドのみ、またはバックエンドのみで使うこともできます。
+
+### フロントエンドのみ
+
+バックエンド (`apps/backend`) を削除し、Hono RPC 関連のコードを取り除きます。
+
+1. `apps/backend/` を削除
+2. `apps/frontend/package.json` から `@repo/backend` と `hono` を削除
+3. `apps/frontend/src/lib/api.ts` を削除（または fetch ベースに書き換え）
+4. `apps/frontend/src/lib/hooks.ts` の RPC クライアント呼び出しを通常の fetch に差し替え
+
+```diff
+ // apps/frontend/package.json
+ "dependencies": {
+-  "@repo/backend": "workspace:*",
+   "@repo/schema": "workspace:*",
+   "@repo/types": "workspace:*",
+   "@tanstack/react-query": "^5.90.14",
+   "@tanstack/react-router": "^1.144.0",
+-  "hono": "catalog:",
+   "react": "catalog:",
+   "react-dom": "catalog:"
+ }
+```
+
+### バックエンドのみ
+
+フロントエンド (`apps/frontend`) を削除します。
+
+1. `apps/frontend/` を削除
+2. ルートの `.oxfmtrc.json` から `experimentalTailwindcss` セクションを削除（Tailwind CSS は不要）
+3. 必要に応じて `packages/types`, `packages/schema` はそのまま利用可能
+
+### 共通手順
+
+どちらの場合も以下を実施してください。
+
+```bash
+# 不要な app を削除した後
+pnpm install    # lockfile を再生成
+pnpm build      # ビルド確認
+```
+
+`turbo.json`, `pnpm-workspace.yaml`, `packages/` はそのまま動作します。残った app とパッケージだけが対象になります。
+
 ## Notes
 
 ### Internal Packages Pattern
