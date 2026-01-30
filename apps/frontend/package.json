@@ -12,10 +12,12 @@
     "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src"
   },
   "dependencies": {
+    "@repo/backend": "workspace:*",
     "@repo/schema": "workspace:*",
     "@repo/types": "workspace:*",
     "@tanstack/react-query": "^5.90.14",
     "@tanstack/react-router": "^1.144.0",
+    "hono": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },

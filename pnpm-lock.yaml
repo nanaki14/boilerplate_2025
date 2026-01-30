@@ -86,6 +86,9 @@ importers:
       '@hono/node-server':
         specifier: 'catalog:'
         version: 1.19.9(hono@4.11.7)
+      '@hono/zod-validator':
+        specifier: ^0.4.0
+        version: 0.4.3(hono@4.11.7)(zod@3.25.76)
       '@repo/schema':
         specifier: workspace:*
         version: link:../../packages/schema
@@ -126,6 +129,9 @@ importers:
 
   apps/frontend:
     dependencies:
+      '@repo/backend':
+        specifier: workspace:*
+        version: link:../backend
       '@repo/schema':
         specifier: workspace:*
         version: link:../../packages/schema
@@ -138,6 +144,9 @@ importers:
       '@tanstack/react-router':
         specifier: ^1.144.0
         version: 1.157.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      hono:
+        specifier: 'catalog:'
+        version: 4.11.7
       react:
         specifier: 'catalog:'
         version: 19.2.4
@@ -486,6 +495,12 @@ packages:
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
+
+  '@hono/zod-validator@0.4.3':
+    resolution: {integrity: sha512-xIgMYXDyJ4Hj6ekm9T9Y27s080Nl9NXHcJkOvkXPhubOLj8hZkOL8pDnnXfvCf5xEE8Q4oMFenQUZZREUY2gqQ==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -2262,6 +2277,11 @@ snapshots:
   '@hono/node-server@1.19.9(hono@4.11.7)':
     dependencies:
       hono: 4.11.7
+
+  '@hono/zod-validator@0.4.3(hono@4.11.7)(zod@3.25.76)':
+    dependencies:
+      hono: 4.11.7
+      zod: 3.25.76
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
