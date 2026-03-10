@@ -19,7 +19,8 @@
     "@tanstack/react-router": "^1.144.0",
     "hono": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",

@@ -168,6 +168,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.4(react@19.2.4)
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.76
     devDependencies:
       '@repo/oxlint-config':
         specifier: workspace:*
