@@ -1,14 +1,10 @@
 {
+  "extends": ["./base.json"],
   "plugins": ["react", "import", "jsx-a11y"],
   "settings": {
     "react": {
       "version": "19.2"
     }
-  },
-  "categories": {
-    "correctness": "error",
-    "suspicious": "warn",
-    "perf": "warn"
   },
   "rules": {
     "react/rules-of-hooks": "error",
@@ -25,16 +21,6 @@
     "react/no-string-refs": "error",
     "react/no-unescaped-entities": "error",
     "react/void-dom-elements-no-children": "error",
-    "react/react-in-jsx-scope": "off",
-    "typescript/no-explicit-any": "warn",
-    "typescript/no-unused-vars": "error",
-    "import/no-default-export": "off",
-    "import/no-duplicates": "error",
-    "import/no-named-as-default": "warn",
-    "import/no-named-as-default-member": "warn",
-    "import/no-unassigned-import": "off",
-    "unicorn/filename-case": "off",
-    "no-unused-vars": "error",
-    "no-unused-private-class-members": "error"
+    "react/react-in-jsx-scope": "off"
   }
 }

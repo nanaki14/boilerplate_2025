@@ -9,10 +9,15 @@
       "default": "./src/index.ts"
     }
   },
+  "scripts": {
+    "lint": "oxlint ./src"
+  },
   "dependencies": {
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*"
+    "@repo/oxlint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "oxlint": "catalog:"
   }
 }
