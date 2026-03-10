@@ -3,6 +3,7 @@ import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+import checker from 'vite-plugin-checker'
 
 export default defineConfig({
   plugins: [
@@ -16,6 +17,11 @@ export default defineConfig({
       },
     }),
     tailwindcss(),
+    checker({
+      oxlint: {
+        lintCommand: 'oxlint ./src',
+      },
+    }),
   ],
   resolve: {
     alias: {
