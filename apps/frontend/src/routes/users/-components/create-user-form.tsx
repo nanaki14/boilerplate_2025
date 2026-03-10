@@ -1,45 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useCreateUser, useUsers } from '@/lib/hooks'
 import { useState } from 'react'
+import { useCreateUser } from '../-hooks'
 
-export const Route = createFileRoute('/users')({
-  component: UsersPage,
-})
-
-function UsersPage() {
-  return (
-    <div className="mx-auto max-w-2xl space-y-8 p-4">
-      <h2 className="text-2xl font-bold">Users</h2>
-      <CreateUserForm />
-      <UserList />
-    </div>
-  )
-}
-
-function UserList() {
-  const { data, isPending, error } = useUsers()
-
-  if (isPending) return <p className="text-gray-500">Loading...</p>
-  if (error) return <p className="text-red-500">Error: {error.message}</p>
-
-  return (
-    <ul className="divide-y">
-      {data.users.map((user) => (
-        <li key={user.id} className="flex items-center gap-4 py-3">
-          <div className="flex size-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700">
-            {user.name[0]}
-          </div>
-          <div>
-            <p className="font-medium">{user.name}</p>
-            <p className="text-sm text-gray-500">{user.email}</p>
-          </div>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
-function CreateUserForm() {
+export function CreateUserForm() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const createUser = useCreateUser()
