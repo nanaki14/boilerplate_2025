@@ -18,6 +18,7 @@
     "@hono/zod-validator": "^0.4.0",
     "@repo/schema": "workspace:*",
     "@repo/types": "workspace:*",
+    "dotenv": "catalog:",
     "hono": "catalog:",
     "zod": "catalog:"
   },
