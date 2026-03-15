@@ -3,6 +3,7 @@ packages:
   - "packages/*"
 
 catalog:
+  dotenv: "^16.4.0"
   typescript: "^5.8.0"
   "@typescript/native-preview": "latest"
   "@types/node": "^25.0.3"
