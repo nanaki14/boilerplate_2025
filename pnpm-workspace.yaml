@@ -23,3 +23,5 @@ catalog:
   tailwindcss: "^4.0.0"
   vite: "^8.0.0"
   vite-plugin-checker: "^0.12.0"
+  "@tanstack/react-start": "^1.144.0"
+  vinxi: "^0.5.3"

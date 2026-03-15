@@ -146,7 +146,7 @@ pnpm install
 pnpm dev
 
 # 個別起動
-pnpm turbo run dev --filter=@repo/frontend
+pnpm turbo run dev --filter=@repo/web-spa
 pnpm turbo run dev --filter=@repo/backend
 ```
 
@@ -172,7 +172,7 @@ pnpm turbo run dev --filter=@repo/backend
 ### 個別実行
 
 ```bash
-pnpm turbo run <script> --filter=@repo/frontend
+pnpm turbo run <script> --filter=@repo/web-spa
 pnpm turbo run <script> --filter=@repo/backend
 pnpm turbo run <script> --filter=@repo/schema
 ```

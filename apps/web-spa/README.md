@@ -1,4 +1,4 @@
-# @repo/frontend
+# @repo/web-spa
 
 React 19 + Vite 8 で構築した SPA。TanStack Router によるファイルベースルーティングと TanStack Query によるデータフェッチを採用しています。
 
