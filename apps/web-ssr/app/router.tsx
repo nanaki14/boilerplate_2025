@@ -8,6 +8,11 @@ export function createRouter() {
   })
 }
 
+// Required by TanStack Start: getRouter is called server-side to resolve the router
+export async function getRouter() {
+  return createRouter()
+}
+
 declare module '@tanstack/react-router' {
   interface Register {
     router: ReturnType<typeof createRouter>

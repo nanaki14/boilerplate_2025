@@ -7,7 +7,7 @@ React 19 + TanStack Start で構築した SSR アプリケーション。TanStac
 | ツール | 役割 |
 |-------|------|
 | React 19 | UI ライブラリ |
-| TanStack Start | SSR フレームワーク（Vinxi/Vite ベース） |
+| TanStack Start | SSR フレームワーク（Vite Environment API ベース） |
 | TanStack Router | 型安全なファイルベースルーティング |
 | Server Functions | `createServerFn` によるサーバー側データ取得・ミューテーション |
 | Tailwind CSS 4 | ユーティリティ CSS |
@@ -17,7 +17,7 @@ React 19 + TanStack Start で構築した SSR アプリケーション。TanStac
 
 | 項目 | `web-spa` (SPA) | `web-ssr` (SSR) |
 |-----|----------------|----------------|
-| ビルドツール | Vite (`vite.config.ts`) | Vinxi (`app.config.ts`) |
+| ビルドツール | Vite (`vite.config.ts`) | Vite + TanStack Start plugin (`vite.config.ts`) |
 | エントリポイント | `src/main.tsx` | `app/client.tsx` + `app/ssr.tsx` |
 | データ取得 | TanStack Query (クライアント) | Server Functions + loader |
 | HTML 生成 | クライアントサイド | サーバーサイド |
@@ -42,7 +42,7 @@ app/
 ├── ssr.tsx                      # サーバーサイドエントリ（SSR ハンドラー）
 └── index.css                    # Tailwind CSS インポート
 
-app.config.ts                    # TanStack Start / Vinxi 設定
+vite.config.ts                   # Vite + TanStack Start plugin 設定
 tsconfig.json                    # TypeScript 設定
 ```
 

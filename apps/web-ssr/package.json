@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview",
     "type-check": "tsgo --noEmit",
     "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./app"
   },
@@ -32,6 +32,6 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "oxlint": "catalog:",
     "tailwindcss": "catalog:",
-    "vinxi": "catalog:"
+    "vite": "catalog:"
   }
 }
