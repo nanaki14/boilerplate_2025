@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/masa/git/boilerplate_2025 && vp lint --fix && vp fmt 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
