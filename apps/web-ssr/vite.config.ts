@@ -7,7 +7,6 @@ export default defineConfig({
   run: {
     tasks: {
       build: { command: 'vp build', cache: true, env: ['NODE_ENV', 'VITE_API_BASE_URL'] },
-      dev: { command: 'vp dev', cache: false },
       test: { command: 'vp test run --passWithNoTests' },
       lint: { command: 'vp lint' },
     },

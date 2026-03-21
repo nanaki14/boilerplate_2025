@@ -8,7 +8,6 @@ export default defineConfig({
         cache: true,
         env: ['NODE_ENV', 'PORT'],
       },
-      dev: { command: 'tsx watch --watch-path=../../packages src/index.ts', cache: false },
       test: { command: 'vp test run --passWithNoTests' },
       lint: { command: 'vp lint' },
     },

@@ -195,9 +195,9 @@ pnpm install
 pnpm dev
 
 # 個別起動
-vp run dev --filter @repo/web-spa
-vp run dev --filter @repo/web-ssr
-vp run dev --filter @repo/backend
+pnpm --filter @repo/web-spa run dev
+pnpm --filter @repo/web-ssr run dev
+pnpm --filter @repo/backend run dev
 ```
 
 > **注意**: ルートで `vp dev` / `vp build` を直接実行しないでください。`pnpm dev` / `pnpm build` を使用してください。

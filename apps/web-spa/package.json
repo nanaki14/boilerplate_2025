@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "vp dev",
     "preview": "vp preview",
     "type-check": "tsgo --noEmit"
   },
