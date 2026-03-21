@@ -13,7 +13,7 @@ const createUserSchema = z.object({
 })
 
 export const createUser = createServerFn({ method: 'POST' })
-  .validator(createUserSchema)
+  .inputValidator(createUserSchema)
   .handler(async ({ data }) => {
     const res = await fetch(`${API_BASE_URL}/api/users`, {
       method: 'POST',

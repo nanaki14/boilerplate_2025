@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "lint": "oxlint ./src"
+    "lint": "vp lint ./src"
   },
   "dependencies": {
     "zod": "catalog:"
@@ -18,6 +18,6 @@
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "oxlint": "catalog:"
+    "vite-plus": "catalog:"
   }
 }

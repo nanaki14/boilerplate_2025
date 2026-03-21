@@ -1,5 +1,5 @@
-import { userQueryOptions, usersQueryOptions, createUser } from '@/lib/api/users'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { userQueryOptions, usersQueryOptions, createUser } from '@/lib/api/users'
 
 export function useUsers() {
   return useQuery(usersQueryOptions)
@@ -15,7 +15,7 @@ export function useCreateUser() {
   return useMutation({
     mutationFn: createUser,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: usersQueryOptions.queryKey })
+      void queryClient.invalidateQueries({ queryKey: usersQueryOptions.queryKey })
     },
   })
 }

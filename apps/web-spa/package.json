@@ -4,12 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "type-check": "tsgo --noEmit",
-    "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src"
+    "dev": "vp dev",
+    "preview": "vp preview",
+    "type-check": "tsgo --noEmit"
   },
   "dependencies": {
     "@repo/backend": "workspace:*",
@@ -36,10 +33,9 @@
     "@vitejs/plugin-react": "^5.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "happy-dom": "^20.3.9",
-    "oxlint": "catalog:",
     "tailwindcss": "catalog:",
     "vite": "catalog:",
-    "vite-plugin-checker": "catalog:",
+    "vite-plus": "catalog:",
     "vitest": "catalog:"
   }
 }
