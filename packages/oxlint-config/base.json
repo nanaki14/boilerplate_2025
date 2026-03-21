@@ -7,14 +7,14 @@
   },
   "rules": {
     "typescript/no-explicit-any": "warn",
-    "typescript/no-unused-vars": "error",
+    "typescript/no-unused-vars": ["error", { "fixStyle": "removeUnusedImports" }],
     "import/no-default-export": "off",
     "import/no-duplicates": "error",
     "import/no-named-as-default": "warn",
     "import/no-named-as-default-member": "warn",
     "import/no-unassigned-import": "off",
     "unicorn/filename-case": "off",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "no-unused-private-class-members": "error"
   }
 }

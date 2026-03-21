@@ -1,11 +1,24 @@
+import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react'
-import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
-import checker from 'vite-plugin-checker'
+import { defineConfig } from 'vite-plus'
 
 export default defineConfig({
+  run: {
+    tasks: {
+      build: { command: 'vp build', cache: true, env: ['NODE_ENV', 'VITE_API_BASE_URL'] },
+      dev: { command: 'vp dev', cache: false },
+      test: { command: 'vp test run' },
+      lint: { command: 'vp lint' },
+    },
+  },
+  lint: {
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
+  },
   plugins: [
     tanstackRouter({
       target: 'react',
@@ -17,11 +30,6 @@ export default defineConfig({
       },
     }),
     tailwindcss(),
-    checker({
-      oxlint: {
-        lintCommand: 'oxlint ./src',
-      },
-    }),
   ],
   resolve: {
     alias: {
