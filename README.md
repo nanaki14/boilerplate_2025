@@ -1,12 +1,12 @@
 # boilerplate_2025
 
-Turborepo モノレポ。React フロントエンド（SPA / SSR）・Hono バックエンド・共有パッケージで構成されています。
+vite-plus モノレポ。React フロントエンド（SPA / SSR）・Hono バックエンド・共有パッケージで構成されています。
 
 ## Tech Stack
 
 ### Monorepo
 
-- **Turborepo** - タスクパイプラインとキャッシュを管理するビルドシステム
+- **vite-plus** - タスクパイプライン・キャッシュ・lint・fmt を統合したツールチェーン
 - **pnpm** - ワークスペース & カタログによる依存バージョン一元管理
 
 ### Frontend SPA (`apps/web-spa`)
@@ -113,7 +113,7 @@ boilerplate_2025/
 │       ├── base.json
 │       ├── react.json
 │       └── node.json
-├── turbo.json                       # Turborepo タスクパイプライン
+├── vite.config.ts                   # vite-plus ワークスペース設定（lint・fmt・staged フック）
 ├── pnpm-workspace.yaml              # ワークスペース & カタログ設定
 ├── .oxlintrc.json                   # リンター設定
 └── .oxfmtrc.json                    # フォーマッター設定
@@ -195,10 +195,12 @@ pnpm install
 pnpm dev
 
 # 個別起動
-pnpm turbo run dev --filter=@repo/web-spa
-pnpm turbo run dev --filter=@repo/web-ssr
-pnpm turbo run dev --filter=@repo/backend
+vp run dev --filter @repo/web-spa
+vp run dev --filter @repo/web-ssr
+vp run dev --filter @repo/backend
 ```
+
+> **注意**: ルートで `vp dev` / `vp build` を直接実行しないでください。`pnpm dev` / `pnpm build` を使用してください。
 
 | サービス     | URL                   |
 | ------------ | --------------------- |
@@ -223,10 +225,10 @@ pnpm turbo run dev --filter=@repo/backend
 ### 個別実行
 
 ```bash
-pnpm turbo run <script> --filter=@repo/web-spa
-pnpm turbo run <script> --filter=@repo/web-ssr
-pnpm turbo run <script> --filter=@repo/backend
-pnpm turbo run <script> --filter=@repo/schema
+vp run <script> --filter @repo/web-spa
+vp run <script> --filter @repo/web-ssr
+vp run <script> --filter @repo/backend
+vp run <script> --filter @repo/schema
 ```
 
 ---
