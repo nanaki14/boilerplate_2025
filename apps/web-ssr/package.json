@@ -31,6 +31,7 @@
     "@typescript/native-preview": "catalog:",
     "babel-plugin-react-compiler": "^1.0.0",
     "oxlint": "catalog:",
+    "react-grab": "^0.1.29",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
   }
