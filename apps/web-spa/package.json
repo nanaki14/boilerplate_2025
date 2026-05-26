@@ -20,6 +20,7 @@
     "hono": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "react-grab": "^0.1.32",
     "zod": "catalog:"
   },
   "devDependencies": {
