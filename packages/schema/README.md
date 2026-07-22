@@ -11,12 +11,12 @@ src/
 
 ## Exports
 
-| エクスポート | 種別 | 説明 |
-|------------|------|------|
-| `userSchema` | Zod スキーマ | ユーザーバリデーション（id, name, email） |
+| エクスポート       | 種別         | 説明                                                 |
+| ------------------ | ------------ | ---------------------------------------------------- |
+| `userSchema`       | Zod スキーマ | ユーザーバリデーション（id, name, email）            |
 | `createUserSchema` | Zod スキーマ | ユーザー作成バリデーション（id を除いた userSchema） |
-| `User` | 型 | `z.infer<typeof userSchema>` |
-| `CreateUser` | 型 | `z.infer<typeof createUserSchema>` |
+| `User`             | 型           | `z.infer<typeof userSchema>`                         |
+| `CreateUser`       | 型           | `z.infer<typeof createUserSchema>`                   |
 
 ## Usage
 

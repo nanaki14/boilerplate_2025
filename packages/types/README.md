@@ -11,10 +11,10 @@ src/
 
 ## Exports
 
-| エクスポート | 説明 |
-|------------|------|
+| エクスポート     | 説明                           |
+| ---------------- | ------------------------------ |
 | `ApiResponse<T>` | API レスポンスの共通ラッパー型 |
-| `User` | ユーザーオブジェクトの型定義 |
+| `User`           | ユーザーオブジェクトの型定義   |
 
 ### ApiResponse\<T\>
 
@@ -32,7 +32,7 @@ type ApiResponse<T> = {
 import type { ApiResponse, User } from '@repo/types'
 
 // API レスポンスの型付け
-const response: ApiResponse<User[]> = await fetch('/api/users').then(r => r.json())
+const response: ApiResponse<User[]> = await fetch('/api/users').then((r) => r.json())
 ```
 
 ## Notes

@@ -10,7 +10,8 @@
     }
   },
   "scripts": {
-    "lint": "oxlint ./src"
+    "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "zod": "catalog:"
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "oxlint": "catalog:"
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
   }
 }

@@ -1,14 +1,17 @@
+import { userSchema } from '@repo/schema'
 import { createFileRoute } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
+import { z } from 'zod'
 import { CreateUserForm } from './-components/create-user-form'
 import { UserList } from './-components/user-list'
 
 const API_BASE_URL = process.env['API_BASE_URL'] ?? 'http://localhost:3001'
+const usersResponseSchema = z.object({ users: z.array(userSchema) })
 
 export const fetchUsers = createServerFn().handler(async () => {
   const res = await fetch(`${API_BASE_URL}/api/users`)
   if (!res.ok) throw new Error('Failed to fetch users')
-  return res.json() as Promise<{ users: Array<{ id: string; name: string; email: string }> }>
+  return usersResponseSchema.parse(await res.json())
 })
 
 export const Route = createFileRoute('/users/')({

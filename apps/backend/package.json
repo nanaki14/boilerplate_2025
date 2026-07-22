@@ -8,14 +8,14 @@
   },
   "scripts": {
     "dev": "tsx watch --watch-path=../../packages src/index.ts",
-    "build": "tsup src/index.ts --format esm --dts",
+    "build": "tsup src/index.ts --format esm",
     "test": "vitest run --passWithNoTests",
-    "type-check": "tsgo --noEmit",
+    "type-check": "tsc --noEmit",
     "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src"
   },
   "dependencies": {
     "@hono/node-server": "catalog:",
-    "@hono/zod-validator": "^0.4.0",
+    "@hono/zod-validator": "^0.9.0",
     "@repo/schema": "workspace:*",
     "@repo/types": "workspace:*",
     "dotenv": "catalog:",
@@ -26,11 +26,10 @@
     "@repo/oxlint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "catalog:",
-    "@typescript/native-preview": "catalog:",
     "oxlint": "catalog:",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.1",
     "typescript": "catalog:",
-    "tsup": "^8.4.0",
-    "tsx": "^4.19.0",
     "vitest": "catalog:"
   }
 }

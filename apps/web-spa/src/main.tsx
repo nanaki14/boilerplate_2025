@@ -1,10 +1,10 @@
-import './index.css'
-import { ErrorBoundary } from '@/components/error-boundary'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
+import { ErrorBoundary } from '@/components/error-boundary'
 import { routeTree } from './routeTree.gen'
+import './index.css'
 
 const queryClient = new QueryClient()
 
