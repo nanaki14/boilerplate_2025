@@ -10,11 +10,13 @@
     }
   },
   "scripts": {
-    "lint": "oxlint ./src"
+    "lint": "oxlint --tsconfig ./tsconfig.json --type-aware ./src",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@repo/oxlint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "oxlint": "catalog:"
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
   }
 }

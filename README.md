@@ -5,10 +5,12 @@ Turborepo モノレポ。React フロントエンド（SPA / SSR）・Hono バ�
 ## Tech Stack
 
 ### Monorepo
+
 - **Turborepo** - タスクパイプラインとキャッシュを管理するビルドシステム
 - **pnpm** - ワークスペース & カタログによる依存バージョン一元管理
 
 ### Frontend SPA (`apps/web-spa`)
+
 - **React 19** - React Compiler プラグインによる自動最適化
 - **Vite 8.0** - 高速ビルドツール
 - **TanStack Router** - 型安全なファイルベースルーティング
@@ -16,6 +18,7 @@ Turborepo モノレポ。React フロントエンド（SPA / SSR）・Hono バ�
 - **Tailwind CSS 4** - Vite プラグイン統合のユーティリティ CSS
 
 ### Frontend SSR (`apps/web-ssr`)
+
 - **React 19** - React Compiler プラグインによる自動最適化
 - **TanStack Start** - Vite Environment API ベースの SSR フレームワーク
 - **TanStack Router** - 型安全なファイルベースルーティング
@@ -23,28 +26,32 @@ Turborepo モノレポ。React フロントエンド（SPA / SSR）・Hono バ�
 - **Tailwind CSS 4** - Vite プラグイン統合のユーティリティ CSS
 
 ### Backend (`apps/backend`)
+
 - **Hono** - 軽量 Web フレームワーク（Node.js サーバー）
 - **Zod** - `@repo/schema` 経由のバリデーション
 - **Hono RPC** - フロントエンドと共有する型安全 API クライアント
 
 ### Shared Packages
+
 - **@repo/schema** - Zod スキーマと推論型
 - **@repo/types** - 共有 TypeScript 型定義
 - **@repo/oxlint-config** - 共有 oxlint 設定（base / react）
 - **@repo/typescript-config** - 共有 tsconfig ベース設定
 
 ### Testing
+
 - **Vitest** - ユニットテストフレームワーク（web-spa）
 - **Testing Library** - React コンポーネントテスト
 - **happy-dom** - テスト用高速 DOM 実装
 
 ### Code Quality
+
 - **oxlint** - Rust 製の高速リンター（型認識ルール対応）
 - **oxfmt** - インポート順・Tailwind クラス順ソート対応フォーマッター
 
 ### TypeScript
-- **tsgo** (`@typescript/native-preview`) - 高速型チェック
-- **typescript** - ビルドツール（tsup）用
+
+- **TypeScript 7** - Go ネイティブ実装の `tsc` による高速型チェック
 
 ---
 
@@ -192,25 +199,25 @@ pnpm turbo run dev --filter=@repo/web-ssr
 pnpm turbo run dev --filter=@repo/backend
 ```
 
-| サービス | URL |
-|---------|-----|
+| サービス     | URL                   |
+| ------------ | --------------------- |
 | Frontend SPA | http://localhost:5173 |
 | Frontend SSR | http://localhost:3000 |
-| Backend | http://localhost:3001 |
+| Backend      | http://localhost:3001 |
 
 ---
 
 ## Scripts Reference
 
-| Script | Description |
-|--------|-------------|
-| `pnpm dev` | 全開発サーバー起動 |
-| `pnpm build` | 全アプリビルド |
-| `pnpm test` | 全テスト実行 |
-| `pnpm type-check` | TypeScript 型チェック |
-| `pnpm lint` | 全パッケージ lint |
-| `pnpm format` | コードフォーマット |
-| `pnpm format:check` | フォーマットチェック |
+| Script              | Description           |
+| ------------------- | --------------------- |
+| `pnpm dev`          | 全開発サーバー起動    |
+| `pnpm build`        | 全アプリビルド        |
+| `pnpm test`         | 全テスト実行          |
+| `pnpm type-check`   | TypeScript 型チェック |
+| `pnpm lint`         | 全パッケージ lint     |
+| `pnpm format`       | コードフォーマット    |
+| `pnpm format:check` | フォーマットチェック  |
 
 ### 個別実行
 
@@ -254,11 +261,11 @@ import type { ApiResponse, User } from '@repo/types'
 
 共有 tsconfig ベースファイル。各アプリ・パッケージはいずれかを extends します。
 
-| ファイル | 用途 |
-|---------|-----|
-| `base.json` | 共通ベース設定 |
+| ファイル     | 用途                           |
+| ------------ | ------------------------------ |
+| `base.json`  | 共通ベース設定                 |
 | `react.json` | React アプリ用（DOM lib 追加） |
-| `node.json` | Node.js アプリ用 |
+| `node.json`  | Node.js アプリ用               |
 
 ```json
 { "extends": "@repo/typescript-config/react.json" }
@@ -293,7 +300,7 @@ import type { ApiResponse, User } from '@repo/types'
 ### バックエンドのみ
 
 1. `apps/web-spa/` と `apps/web-ssr/` を削除
-2. `.oxfmtrc.json` から `experimentalTailwindcss` セクションを削除
+2. `.oxfmtrc.json` から `sortTailwindcss` セクションを削除
 
 ### 共通手順
 
@@ -307,9 +314,11 @@ pnpm build     # ビルド確認
 ## Notes
 
 ### TanStack Router ファイルベースルーティング
+
 `-` プレフィックスのファイル・ディレクトリはルーターに無視されます（例: `-hooks.ts`, `-components/`）。ルート専用のコンポーネントやフックをルートファイルに同居させる際に使用します。
 
 ### web-ssr のパスエイリアス
+
 `@/` は `./app/` に解決されます。
 
 ```ts
@@ -317,6 +326,7 @@ import { something } from '@/utils/something'
 ```
 
 ### web-ssr の環境変数
-| 変数 | デフォルト | 説明 |
-|-----|---------|-----|
+
+| 変数           | デフォルト              | 説明                          |
+| -------------- | ----------------------- | ----------------------------- |
 | `API_BASE_URL` | `http://localhost:3001` | バックエンド API のベース URL |

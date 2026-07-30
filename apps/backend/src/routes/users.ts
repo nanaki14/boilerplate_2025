@@ -1,7 +1,7 @@
 import { zValidator } from '@hono/zod-validator'
-import { Hono } from 'hono'
 import { createUserSchema } from '@repo/schema'
 import type { User } from '@repo/schema'
+import { Hono } from 'hono'
 
 /** インメモリのユーザーストア (サンプル用) */
 const users: User[] = [

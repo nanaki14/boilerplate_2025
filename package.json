@@ -12,20 +12,12 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@typescript/native-preview": "catalog:",
     "husky": "^9.1.7",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
     "oxlint-tsgolint": "catalog:",
-    "turbo": "^2"
+    "turbo": "^2.10.5",
+    "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.16.1",
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "esbuild"
-    ],
-    "overrides": {
-      "vite": "^8.0.0"
-    }
-  }
+  "packageManager": "pnpm@11.15.1"
 }

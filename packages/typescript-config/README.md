@@ -17,6 +17,7 @@ node.json     # Node.js アプリ用（base.json を extends）
 全設定の共通ベース。strict モード・ESNext・bundler モジュール解決を有効化。
 
 主な設定:
+
 - `target`: ES2020
 - `module`: ESNext / `moduleResolution`: bundler
 - `strict`: true
@@ -28,7 +29,9 @@ node.json     # Node.js アプリ用（base.json を extends）
 `base.json` を extends し、React / DOM 用の設定を追加。
 
 追加設定:
+
 - `lib`: `["ES2020", "DOM", "DOM.Iterable"]`
+- `types`: `["vite/client"]`
 - `jsx`: `react-jsx`
 
 ### node.json
@@ -36,7 +39,9 @@ node.json     # Node.js アプリ用（base.json を extends）
 `base.json` を extends し、Node.js 用の設定を追加。
 
 追加設定:
+
 - `lib`: `["ES2020"]`（DOM なし）
+- `types`: `["node"]`
 
 ## Usage
 

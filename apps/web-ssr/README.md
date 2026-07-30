@@ -4,24 +4,24 @@ React 19 + TanStack Start で構築した SSR アプリケーション。TanStac
 
 ## Tech Stack
 
-| ツール | 役割 |
-|-------|------|
-| React 19 | UI ライブラリ |
-| TanStack Start | SSR フレームワーク（Vite Environment API ベース） |
-| TanStack Router | 型安全なファイルベースルーティング |
+| ツール           | 役割                                                          |
+| ---------------- | ------------------------------------------------------------- |
+| React 19         | UI ライブラリ                                                 |
+| TanStack Start   | SSR フレームワーク（Vite Environment API ベース）             |
+| TanStack Router  | 型安全なファイルベースルーティング                            |
 | Server Functions | `createServerFn` によるサーバー側データ取得・ミューテーション |
-| Tailwind CSS 4 | ユーティリティ CSS |
-| oxlint | 型認識対応の高速リンター |
+| Tailwind CSS 4   | ユーティリティ CSS                                            |
+| oxlint           | 型認識対応の高速リンター                                      |
 
 ## SPA との違い
 
-| 項目 | `web-spa` (SPA) | `web-ssr` (SSR) |
-|-----|----------------|----------------|
-| ビルドツール | Vite (`vite.config.ts`) | Vite + TanStack Start plugin (`vite.config.ts`) |
-| エントリポイント | `src/main.tsx` | `app/client.tsx` + `app/ssr.tsx` |
-| データ取得 | TanStack Query (クライアント) | Server Functions + loader |
-| HTML 生成 | クライアントサイド | サーバーサイド |
-| CSS | `src/index.css` | `app/index.css?url` (`head()` で注入) |
+| 項目             | `web-spa` (SPA)               | `web-ssr` (SSR)                                 |
+| ---------------- | ----------------------------- | ----------------------------------------------- |
+| ビルドツール     | Vite (`vite.config.ts`)       | Vite + TanStack Start plugin (`vite.config.ts`) |
+| エントリポイント | `src/main.tsx`                | `app/client.tsx` + `app/ssr.tsx`                |
+| データ取得       | TanStack Query (クライアント) | Server Functions + loader                       |
+| HTML 生成        | クライアントサイド            | サーバーサイド                                  |
+| CSS              | `src/index.css`               | `app/index.css?url` (`head()` で注入)           |
 
 ## Directory Structure
 
@@ -123,6 +123,6 @@ import { something } from '@/utils/something'
 
 ## Environment
 
-| 変数 | デフォルト | 説明 |
-|-----|---------|-----|
+| 変数           | デフォルト              | 説明                          |
+| -------------- | ----------------------- | ----------------------------- |
 | `API_BASE_URL` | `http://localhost:3001` | バックエンド API のベース URL |

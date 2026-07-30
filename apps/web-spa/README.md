@@ -4,16 +4,16 @@ React 19 + Vite 8 で構築した SPA。TanStack Router によるファイルベ
 
 ## Tech Stack
 
-| ツール | 役割 |
-|-------|------|
-| React 19 | UI ライブラリ（React Compiler による自動最適化） |
-| Vite 8.0 (beta) | Rolldown ベースのビルドツール |
-| TanStack Router | 型安全なファイルベースルーティング |
-| TanStack Query | データフェッチ・キャッシング・ミューテーション |
-| Hono RPC | バックエンドとの型共有 API クライアント |
-| Tailwind CSS 4 | Vite プラグイン統合のユーティリティ CSS |
-| Vitest | ユニットテスト |
-| oxlint | 型認識対応の高速リンター |
+| ツール          | 役割                                             |
+| --------------- | ------------------------------------------------ |
+| React 19        | UI ライブラリ（React Compiler による自動最適化） |
+| Vite 8.0 (beta) | Rolldown ベースのビルドツール                    |
+| TanStack Router | 型安全なファイルベースルーティング               |
+| TanStack Query  | データフェッチ・キャッシング・ミューテーション   |
+| Hono RPC        | バックエンドとの型共有 API クライアント          |
+| Tailwind CSS 4  | Vite プラグイン統合のユーティリティ CSS          |
+| Vitest          | ユニットテスト                                   |
+| oxlint          | 型認識対応の高速リンター                         |
 
 ## Directory Structure
 
@@ -71,13 +71,13 @@ lib/api/client.ts           ← Hono RPC クライアント
 
 ### TanStack Router ファイル命名規約
 
-| パターン | 意味 |
-|---------|------|
-| `routes/foo.tsx` | `/foo` ルート（フラット） |
-| `routes/foo/index.tsx` | `/foo` ルート（ディレクトリ） |
-| `routes/__root.tsx` | ルートレイアウト |
-| `routes/foo/-bar.ts` | ルーターに無視されるファイル（プライベート） |
-| `routes/foo/-components/` | ルーターに無視されるディレクトリ |
+| パターン                  | 意味                                         |
+| ------------------------- | -------------------------------------------- |
+| `routes/foo.tsx`          | `/foo` ルート（フラット）                    |
+| `routes/foo/index.tsx`    | `/foo` ルート（ディレクトリ）                |
+| `routes/__root.tsx`       | ルートレイアウト                             |
+| `routes/foo/-bar.ts`      | ルーターに無視されるファイル（プライベート） |
+| `routes/foo/-components/` | ルーターに無視されるディレクトリ             |
 
 ## Development
 
